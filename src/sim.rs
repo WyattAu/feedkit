@@ -2,10 +2,10 @@
 //! any upstream dependency. xorshift64* PRNG, fixed seed: runs are
 //! reproducible for demos and tests.
 
-use std::future::Future;
 use crate::error::FeedError;
 use crate::event::{now_ms, Quote};
 use crate::source::{Source, SourceBatch};
+use std::future::Future;
 
 /// Emits a geometric random walk per symbol on every poll.
 pub struct SimMarket {

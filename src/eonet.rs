@@ -63,7 +63,9 @@ impl EonetSource {
                 (
                     coords.and_then(|c| c.first()).and_then(Value::as_f64),
                     coords.and_then(|c| c.get(1)).and_then(Value::as_f64),
-                    g.get("date").and_then(Value::as_str).and_then(rfc3339_to_ms),
+                    g.get("date")
+                        .and_then(Value::as_str)
+                        .and_then(rfc3339_to_ms),
                 )
             }
             None => (None, None, None),

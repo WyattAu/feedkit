@@ -60,8 +60,8 @@ impl Source for NewsSource {
             .text()
             .await
             .map_err(|e| FeedError::Malformed(format!("body read failed: {e}")))?;
-        let channel =
-            rss::Channel::read_from(body.as_bytes()).map_err(|e| FeedError::Malformed(format!("rss parse failed: {e}")))?;
+        let channel = rss::Channel::read_from(body.as_bytes())
+            .map_err(|e| FeedError::Malformed(format!("rss parse failed: {e}")))?;
         let mut out = Vec::new();
         for item in channel.items() {
             let Some(link) = item.link() else {

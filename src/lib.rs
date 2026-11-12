@@ -9,9 +9,9 @@
 
 #![forbid(unsafe_code)]
 
-pub mod event;
-mod error;
 mod eonet;
+mod error;
+pub mod event;
 mod firms;
 mod news;
 mod nvd;
@@ -20,12 +20,12 @@ mod source;
 mod swpc;
 mod usgs;
 
+pub use eonet::EonetSource;
 pub use error::FeedError;
 pub use event::{
     kind_slug, now_ms, rfc2822_to_ms, rfc3339_to_ms, Alert, Event, Observation, ObservationKind,
     Quote,
 };
-pub use eonet::EonetSource;
 pub use firms::FirmsSource;
 pub use news::NewsSource;
 pub use nvd::NvdSource;

@@ -115,16 +115,16 @@ pub fn kind_slug(kind: ObservationKind) -> &'static str {
 /// Parses an RFC 3339 timestamp (most feeds) to epoch milliseconds.
 #[must_use]
 pub fn rfc3339_to_ms(value: &str) -> Option<i64> {
-    let dt = time::OffsetDateTime::parse(value, &time::format_description::well_known::Rfc3339)
-        .ok()?;
+    let dt =
+        time::OffsetDateTime::parse(value, &time::format_description::well_known::Rfc3339).ok()?;
     epoch_ms(dt)
 }
 
 /// Parses an RFC 2822 timestamp (RSS `pubDate`) to epoch milliseconds.
 #[must_use]
 pub fn rfc2822_to_ms(value: &str) -> Option<i64> {
-    let dt = time::OffsetDateTime::parse(value, &time::format_description::well_known::Rfc2822)
-        .ok()?;
+    let dt =
+        time::OffsetDateTime::parse(value, &time::format_description::well_known::Rfc2822).ok()?;
     epoch_ms(dt)
 }
 

@@ -54,7 +54,10 @@ impl Source for SwpcSource {
             .ok_or_else(|| FeedError::Malformed("SWPC payload is not an array".to_string()))?;
         let mut out = Vec::new();
         for alert in alerts {
-            let product_id = alert.get("product_id").and_then(Value::as_str).unwrap_or("");
+            let product_id = alert
+                .get("product_id")
+                .and_then(Value::as_str)
+                .unwrap_or("");
             let issued = alert
                 .get("issue_datetime")
                 .and_then(Value::as_str)

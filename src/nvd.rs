@@ -80,7 +80,10 @@ impl NvdSource {
             lat: None,
             lon: None,
             magnitude: score,
-            url: Some(format!("https://nvd.nist.gov/vuln/detail/{}", cve.get("id").and_then(Value::as_str).unwrap_or(""))),
+            url: Some(format!(
+                "https://nvd.nist.gov/vuln/detail/{}",
+                cve.get("id").and_then(Value::as_str).unwrap_or("")
+            )),
             occurred_at_ms: published,
             fetched_at_ms: now_ms(),
             license: NVD_LICENSE.to_string(),

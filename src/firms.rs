@@ -88,7 +88,9 @@ impl Source for FirmsSource {
             .await
             .map_err(|e| FeedError::Malformed(format!("body read failed: {e}")))?;
         if body.starts_with("Invalid") || body.contains("Invalid MAP_KEY") {
-            return Err(FeedError::Malformed("FIRMS rejected the MAP_KEY".to_string()));
+            return Err(FeedError::Malformed(
+                "FIRMS rejected the MAP_KEY".to_string(),
+            ));
         }
         let mut out = Vec::new();
         for line in body.lines().skip(1) {
